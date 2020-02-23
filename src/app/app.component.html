@@ -1,33 +1,7 @@
 <div class="container-fluid ">
   <nav class="navegation">
-    <h1
-      id="titleBoard"
-      class="col-xs-12"
-      (click)="availableInput()"
-      [ngClass]="{
-        'd-none': vision,
-        'd-block': !vision
-      }">{{ title }}
-    </h1> 
-
-    <div
-      class="row"
-      id="changeTitle"
-      [ngClass]="{
-        'd-none': !vision,
-        'd-block': vision
-      }">
-      <div class="form-group col-sm-6">
-        <input
-          (input)="changeTitle($event)"
-          (keyup) = "availableInputByEnter($event)"
-          type="text"
-          class="form-control input-chg"
-          placeholder="Alterar título">
-      </div>
-    </div>
-    <app-busca-filtros>
-      <app-filtros></app-filtros>
-    </app-busca-filtros>
+    <app-topo [title]="title"></app-topo>
+    <app-busca-filtros></app-busca-filtros>
   </nav>
+  <app-board-column></app-board-column>
 </div>

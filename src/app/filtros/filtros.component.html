@@ -1,1 +1,19 @@
-<p>filtros works!</p>
+<div class="block-filters">
+  <div class="row">
+    <ul class="list-inline list-people col-md-4 col-lg-7">
+      <li class="list-inline-item" *ngFor="let person of people">
+        <a class="text-xs-center" href="#">
+          <img class="photo-url" [src]="userImg" alt="">
+          <b>{{ person.name }}</b>
+        </a>
+      </li>
+    </ul>
+
+    <ul class="list-inline list-tags col-md-4 col-lg-3">
+      <li class="list-inline-item" *ngFor="let tag of tags">
+        <a href="#" class="badge badge-light">{{ tag }}</a>
+      </li>
+    </ul>
+  </div>
+</div>
+

@@ -1,1 +1,26 @@
-<p>topo works!</p>
+<h1
+  id="titleBoard"
+  class="col-xs-12 title-board"
+  (click)="availableInput()"
+  [ngClass]="{
+    'd-none': vision,
+    'd-block': !vision
+  }">{{ title }}
+</h1>
+
+<div
+  class="row"
+  id="changeTitle"
+  [ngClass]="{
+    'd-none': !vision,
+    'd-block': vision
+  }">
+  <div class="form-group col-sm-6">
+    <input
+      (input)="changeTitle($event)"
+      (keyup) = "availableInputByEnter($event)"
+      type="text"
+      class="form-control input-chg"
+      placeholder="Alterar título">
+  </div>
+</div>

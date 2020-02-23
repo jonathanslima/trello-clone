@@ -1,0 +1,30 @@
+// .block-filters{ display: none; }
+
+.list-people{
+  li{
+    margin-right: 15px;
+
+    .photo-url{
+      width: 30px;
+      margin-right: 5px;
+    }
+  }
+
+  a{
+    color: #566780;
+    transition: 500ms all ease;
+    font-size: 14px;
+
+    &:hover{
+      text-decoration: none;
+      color: #007bff
+    }
+  }
+}
+
+.list-tags{
+  .badge{
+    color: #818181
+
+  }
+}

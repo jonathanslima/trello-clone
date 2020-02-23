@@ -1,34 +1,28 @@
 import { Component } from '@angular/core';
+import { retrieveData } from './servicos/data.service';
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
-  styleUrls: ['./app.component.scss']
+  styleUrls: ['./app.component.scss'],
+  providers: [retrieveData]
 })
 export class AppComponent {
-  public title: string = 'Titulo do quadro';
-  public vision: boolean = false;
+  public title: string;
 
-  public changeTitle(newTitle): void{
-    this.title = (<HTMLInputElement>newTitle.target).value || 'Titulo do quadro'
-  }
+  constructor(private retrieveData:retrieveData) { }
 
-  public availableInput(): any{
-    setTimeout(function(){
-      (<HTMLInputElement>document.querySelector('.input-chg')).focus();
-    }, 0)
-    console.log(this.vision)
-    if(this.vision === false){
-      this.vision = true;
-      return
-    }
-    this.vision = false;
-  }
 
-  public availableInputByEnter(e){
-    if (e.key === "Enter") {
-      this.availableInput()
-    }
+  ngOnInit() {
+    this.retrieveData.getBoards()
+      .then((res)=>{
+        console.log(res)
+        this.title = res[0].title;
+
+      }).catch((err)=>{
+        console.error('error: ', err)
+
+      })
   }
 }
 

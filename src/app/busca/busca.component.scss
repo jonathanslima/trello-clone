@@ -1,0 +1,21 @@
+.btn-filter{
+  font-size: 14px;
+  background-color: #e4e6eb;
+  border: 1px solid #ced4da;
+  color: #707070;
+
+  .arrow-down{
+    margin-top: -10px;
+    width: 7px;
+    height: 7px;
+    border-left: 1px solid #707070;
+    border-bottom: 1px solid #707070;
+    display: inline-block;
+    margin-left: 10px;
+    transform: rotate(-45deg); /*135px*/
+  }
+}
+
+.wrapper-search{
+  margin-bottom: 15px;
+}
