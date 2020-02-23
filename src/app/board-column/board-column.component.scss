@@ -1,0 +1,83 @@
+.secao-colunas {
+  margin-top: 30px;
+  display: flex;
+  flex-grow: 1;
+
+  overflow-x: auto;
+
+  .coluna {
+    min-width: 300px;
+    flex-grow: 1;
+    flex-basis: 0;
+    flex-direction: column;
+
+    .header{
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background-color: #e4e6eb;
+      height: 60px;
+      padding: 0 0 0 15px;
+
+      .titulo-coluna{
+        margin: 0;
+        font-size: 14px;
+        text-transform: uppercase;
+      }
+
+      .menu-section{
+        position: relative;
+        height: 100%;
+        display: flex;
+        cursor: pointer;
+        width: 45px;
+        justify-content: space-around;
+        flex-direction: column;
+        align-items: center;
+
+        .menu{
+          position: relative;
+          width: 3px;
+          height: 3px;
+          border-radius: 50%;
+          background-color: #333;
+          display: block;
+          top: 0px;
+
+          &:before{
+            content: "";
+            @extend .menu;
+            top: -12px;
+          }
+
+          &:after{
+            content: "";
+            @extend .menu;
+            top: 9px;
+          }
+        }
+
+        .dropdown-submenu{
+          position: absolute;
+          top: 30px;
+          left: 30px;
+          display: none;
+        }
+      }
+    }
+  }
+
+  .add-coluna {
+    height: 60px;
+    background-color: #fff;
+    border: 1px dashed #b8b8b8;
+    color: #b8b8b8;
+    min-width: 320px;
+    transition: 500ms all ease;
+
+    &:hover {
+      border: 1px dashed #333;
+      color: #333;
+    }
+  }
+}
