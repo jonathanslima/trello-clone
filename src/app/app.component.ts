@@ -9,15 +9,15 @@ import { retrieveData } from './servicos/data.service';
 })
 export class AppComponent {
   public title: string;
+  public columns: Array<object>;
 
   constructor(private retrieveData:retrieveData) { }
-
 
   ngOnInit() {
     this.retrieveData.getBoards()
       .then((res)=>{
-        console.log(res)
         this.title = res[0].title;
+        this.columns = res[0].columns;
 
       }).catch((err)=>{
         console.error('error: ', err)

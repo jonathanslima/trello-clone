@@ -1,7 +1,7 @@
-<div class="secao-colunas">
-  <div class="coluna">
+<div class="secao-colunas" cdkDropListGroup>
+  <div class="coluna" *ngFor="let coluna of columns">
     <div class="header">
-      <h2 class="titulo-coluna">A Iniciar</h2>
+      <h2 class="titulo-coluna">{{ coluna.title }}</h2>
       <div class="menu-section" (click)="toogleSubmenu()">
         <div class="menu"></div>
         <div class="list-group dropdown-submenu">
@@ -10,17 +10,34 @@
         </div>
       </div>
     </div>
-    <div class="task">
-      <p class="text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Minus nesciunt, corrupti perspiciatis voluptatum, ipsa eum cum blanditiis ad aspernatur repellat facere praesentium. Saepe accusamus ducimus consequuntur iste optio perferendis eligendi.</p>
 
-      <span class="badge badge-light">tag</span>
-      <span class="user"></span>
+    <div class="card"
+      cdkDropList
+      #todoList="cdkDropList"
+      [cdkDropListData]="coluna.cards"
+      (cdkDropListDropped)="drop($event)"
+    >
+      <div class="task drag-box" *ngFor="let card of coluna.cards" cdkDrag>
+        <p class="text">{{ card.title }}</p>
+
+        <span class="badge badge-light" *ngFor="let allTags of card.tags">{{ allTags }}</span>
+
+        <span *ngFor="let allMembers of card.members">
+          <span *ngIf="allMembers?.photoURL; else imgDefault">
+            <img class="photo-url" [src]="allMembers.photoURL" [alt]="allMembers.name" [title]="allMembers.name">
+          </span>
+
+          <ng-template #imgDefault>
+            <img class="photo-url" src="../../assets/img/user.png" [alt]="allMembers.name" [title]="allMembers.name">
+          </ng-template>
+        </span>
+      </div>
     </div>
+
+    <button id="add-card" class="add-card">
+      + TASK
+    </button>
   </div>
-
-  <div class="coluna"></div>
-
-  <div class="coluna"></div>
 
   <button id="add-coluna" class="add-coluna">
     + COLUNA

@@ -10,8 +10,9 @@
     flex-grow: 1;
     flex-basis: 0;
     flex-direction: column;
+    margin: 0 15px 30px 0;
 
-    .header{
+    .header {
       display: flex;
       justify-content: space-between;
       align-items: center;
@@ -19,13 +20,13 @@
       height: 60px;
       padding: 0 0 0 15px;
 
-      .titulo-coluna{
+      .titulo-coluna {
         margin: 0;
         font-size: 14px;
         text-transform: uppercase;
       }
 
-      .menu-section{
+      .menu-section {
         position: relative;
         height: 100%;
         display: flex;
@@ -35,7 +36,7 @@
         flex-direction: column;
         align-items: center;
 
-        .menu{
+        .menu {
           position: relative;
           width: 3px;
           height: 3px;
@@ -44,25 +45,63 @@
           display: block;
           top: 0px;
 
-          &:before{
+          &:before {
             content: "";
             @extend .menu;
             top: -12px;
           }
 
-          &:after{
+          &:after {
             content: "";
             @extend .menu;
             top: 9px;
           }
         }
 
-        .dropdown-submenu{
+        .dropdown-submenu {
           position: absolute;
+          z-index: 1;
           top: 30px;
           left: 30px;
           display: none;
         }
+      }
+    }
+
+    .badge-light{
+      color: #818181;
+      margin-right: 5px;
+    }
+
+    .add-card{
+      width: 100%;
+      border: 1px dashed #b8b8b8;
+      color: #b8b8b8;
+      background-color: #f4f5f7;
+      padding: 10px 0;
+      transition: 500ms all ease;
+
+      &:hover{
+        border: 1px dashed #333;
+        color: #333;
+      }
+    }
+  }
+
+  .card {
+    padding: 15px;
+    background-color: #f4f5f7;
+    border: none;
+
+    .task {
+      background-color: #fff;
+      padding: 15px;
+      box-shadow: 3px 3px 5px rgba(110, 110, 110, 0.158);
+      margin-bottom: 15px;
+
+      .photo-url{
+        width: 30px;
+        margin: 0 5px;
       }
     }
   }
@@ -80,4 +119,49 @@
       color: #333;
     }
   }
+}
+
+// drag drop
+.drag-box {
+  cursor: move;
+  background: #fff;
+  border-radius: 4px;
+  position: relative;
+  z-index: 1;
+  transition: box-shadow 200ms cubic-bezier(0, 0, 0.2, 1);
+  box-shadow: 0 3px 1px -2px rgba(0, 0, 0, 0.2),
+              0 2px 2px 0 rgba(0, 0, 0, 0.14),
+              0 1px 5px 0 rgba(0, 0, 0, 0.12);
+}
+
+.drag-box:active {
+  box-shadow: 0 5px 5px -3px rgba(0, 0, 0, 0.2),
+              0 8px 10px 1px rgba(0, 0, 0, 0.14),
+              0 3px 14px 2px rgba(0, 0, 0, 0.12);
+}
+.cdk-drag-preview {
+  padding: 15px;
+
+  box-sizing: border-box;
+  border-radius: 4px;
+  box-shadow: 0 5px 5px -3px rgba(0, 0, 0, 0.2),
+              0 8px 10px 1px rgba(0, 0, 0, 0.14),
+              0 3px 14px 2px rgba(0, 0, 0, 0.12);
+
+  .photo-url{
+    width: 30px !important;
+    margin: 0 5px!important;
+  }
+}
+
+.cdk-drag-placeholder {
+  opacity: 0;
+}
+
+.cdk-drag-animating {
+  transition: transform 250ms cubic-bezier(0, 0, 0.2, 1);
+}
+
+.card.cdk-drop-list-dragging .drag-box:not(.cdk-drag-placeholder) {
+  transition: transform 250ms cubic-bezier(0, 0, 0.2, 1);
 }

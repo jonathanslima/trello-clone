@@ -3,5 +3,8 @@
     <app-topo [title]="title"></app-topo>
     <app-busca-filtros></app-busca-filtros>
   </nav>
-  <app-board-column></app-board-column>
+  <div *ngIf="columns">
+    <app-board-column [columns]="columns"></app-board-column>
+  </div>
+
 </div>
