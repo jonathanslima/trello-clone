@@ -10,27 +10,22 @@ import { CdkDragDrop, moveItemInArray, transferArrayItem } from "@angular/cdk/dr
 export class BoardColumnComponent implements OnInit {
   @Input() public columns: Array<object>;
   public imgDefault = "../../assets/img/user.png";
-  public hidden: boolean = true;
+
   constructor() {}
 
-  public toogleSubmenu() {
-    let el = <HTMLElement>document.querySelector(".dropdown-submenu");
-    el.classList.remove("d-none", "d-block");
+  public toogleSubmenu(event) {
+    let el = event.target.querySelector('.dropdown-submenu');
 
-    if (this.hidden) {
+    if (el.classList.contains('d-none')) {
       el.classList.add("d-block");
-      this.hidden = false;
+      el.classList.remove("d-none");
+
     } else {
       el.classList.add("d-none");
-      this.hidden = true;
+      el.classList.remove("d-block");
+
     }
   }
-
-  todo = [
-    "Agendar as entrevistas",
-    "Enviar os testes",
-    "Corrigir o teste técnico"
-  ];
 
   drop(event: CdkDragDrop<string[]>) {
     if (event.previousContainer === event.container) {
@@ -39,6 +34,9 @@ export class BoardColumnComponent implements OnInit {
         event.previousIndex,
         event.currentIndex
       );
+
+      console.log(event.previousContainer.data)
+      console.log(event.container.data)
     } else {
       transferArrayItem(
         event.previousContainer.data,
@@ -46,10 +44,13 @@ export class BoardColumnComponent implements OnInit {
         event.previousIndex,
         event.currentIndex
       );
+
+      console.log(event.previousContainer.data)
+      console.log(event.container.data)
     }
   }
 
   ngOnInit() {
-    console.log(this.columns);
+    // console.log(this.columns);
   }
 }

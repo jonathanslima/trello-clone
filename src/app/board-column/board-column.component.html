@@ -2,9 +2,9 @@
   <div class="coluna" *ngFor="let coluna of columns">
     <div class="header">
       <h2 class="titulo-coluna">{{ coluna.title }}</h2>
-      <div class="menu-section" (click)="toogleSubmenu()">
+      <div class="menu-section" (click)="toogleSubmenu($event)">
         <div class="menu"></div>
-        <div class="list-group dropdown-submenu">
+        <div class="list-group dropdown-submenu d-none">
           <a href="#" class="list-group-item list-group-item-action">Editar</a>
           <a href="#" class="list-group-item list-group-item-action">Remover</a>
         </div>
