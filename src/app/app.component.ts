@@ -13,6 +13,10 @@ export class AppComponent {
 
   constructor(private retrieveData:retrieveData) { }
 
+  public atualizaColumn(data){
+    this.columns = data;
+  }
+
   ngOnInit() {
     this.retrieveData.getTitle()
       .then(res => {

@@ -25,6 +25,12 @@ export class retrieveData{
       .then((columns: any) => columns)
   }
 
+  public addColumns(data):Promise<any>{
+    return this.http.post('http://localhost:3000/columns', data)
+      .toPromise()
+      .then((columns: any)=> columns)
+  }
+
   public getTags(){
     return this.http.get('http://localhost:3000/tags')
     .toPromise()

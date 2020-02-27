@@ -2,6 +2,7 @@ import { BrowserModule } from "@angular/platform-browser";
 import { NgModule } from "@angular/core";
 import { HttpClientModule } from "@angular/common/http";
 import { DragDropModule } from "@angular/cdk/drag-drop";
+import { FormsModule } from '@angular/forms';
 
 import { AppComponent } from "./app.component";
 import { TopoComponent } from "./topo/topo.component";
@@ -23,7 +24,7 @@ import { CriarTaskComponent } from './criar-task/criar-task.component';
     CriarColunaComponent,
     CriarTaskComponent
   ],
-  imports: [BrowserModule, HttpClientModule, DragDropModule],
+  imports: [BrowserModule, HttpClientModule, DragDropModule, FormsModule],
   providers: [],
   bootstrap: [AppComponent]
 })
