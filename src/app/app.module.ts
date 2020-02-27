@@ -9,6 +9,8 @@ import { BuscaFiltrosComponent } from "./busca-filtros/busca-filtros.component";
 import { BuscaComponent } from "./busca/busca.component";
 import { FiltrosComponent } from "./filtros/filtros.component";
 import { BoardColumnComponent } from "./board-column/board-column.component";
+import { CriarColunaComponent } from './criar-coluna/criar-coluna.component';
+import { CriarTaskComponent } from './criar-task/criar-task.component';
 
 @NgModule({
   declarations: [
@@ -17,7 +19,9 @@ import { BoardColumnComponent } from "./board-column/board-column.component";
     BuscaFiltrosComponent,
     BuscaComponent,
     FiltrosComponent,
-    BoardColumnComponent
+    BoardColumnComponent,
+    CriarColunaComponent,
+    CriarTaskComponent
   ],
   imports: [BrowserModule, HttpClientModule, DragDropModule],
   providers: [],

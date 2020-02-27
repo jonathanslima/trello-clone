@@ -5,8 +5,8 @@
       <div class="menu-section" (click)="toogleSubmenu($event)">
         <div class="menu"></div>
         <div class="list-group dropdown-submenu d-none">
-          <a href="#" class="list-group-item list-group-item-action">Editar</a>
-          <a href="#" class="list-group-item list-group-item-action">Remover</a>
+          <a href="#" class="editar list-group-item list-group-item-action">Editar</a>
+          <a href="#" (click)="removeColuna($event)" class="remover list-group-item list-group-item-action">Remover</a>
         </div>
       </div>
     </div>
@@ -39,7 +39,7 @@
     </button>
   </div>
 
-  <button id="add-coluna" class="add-coluna">
+  <button id="add-coluna" class="add-coluna" (click)="openFormCriaColuna($event)">
     + COLUNA
   </button>
 </div>

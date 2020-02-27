@@ -50,6 +50,18 @@ export class BoardColumnComponent implements OnInit {
     }
   }
 
+  public removeColuna(event: any): void{
+    event.stopPropagation();
+    let el = event.target;
+    el.closest('.coluna').classList.add('d-none')
+    console.log(el)
+  }
+
+  public openFormCriaColuna(){
+    let el = <HTMLElement>document.querySelector('.bg-op');
+    el.classList.remove('d-none')
+  }
+
   ngOnInit() {
     // console.log(this.columns);
   }

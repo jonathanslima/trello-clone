@@ -14,10 +14,15 @@ export class AppComponent {
   constructor(private retrieveData:retrieveData) { }
 
   ngOnInit() {
-    this.retrieveData.getBoards()
+    this.retrieveData.getTitle()
+      .then(res => {
+        this.title = res.name;
+      })
+
+    this.retrieveData.getColumns()
       .then((res)=>{
-        this.title = res[0].title;
-        this.columns = res[0].columns;
+        this.columns = res;
+        console.log(res)
 
       }).catch((err)=>{
         console.error('error: ', err)

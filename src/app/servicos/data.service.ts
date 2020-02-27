@@ -7,10 +7,22 @@ import { Injectable } from '@angular/core';
 export class retrieveData{
   constructor(private http: HttpClient){}
 
-  public getBoards():Promise<any>{
-    return this.http.get('http://localhost:3000/boards')
+  public getTitle():Promise<any>{
+    return this.http.get('http://localhost:3000/titleBoard')
       .toPromise()
-      .then((boards: any) => boards)
+      .then((title: string) => title)
+  }
+
+  public updateTitle(data):Promise<any>{
+    return this.http.put('http://localhost:3000/titleBoard', data)
+      .toPromise()
+      .then((res: any) => res)
+  }
+
+  public getColumns():Promise<any>{
+    return this.http.get('http://localhost:3000/columns')
+      .toPromise()
+      .then((columns: any) => columns)
   }
 
   public getTags(){
