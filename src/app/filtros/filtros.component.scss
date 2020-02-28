@@ -15,18 +15,51 @@
   .item-plus{
     position: relative;
 
+    .line{
+      width: 15px;
+      height: 2px;
+      background-color: #fff;
+      display: block;
+    }
+
+    .line-1{
+      transform: rotate(90deg);
+    }
+
+    .line-2{
+      position: relative;
+      top: -2px;
+    }
+
+    .anim-sub{ animation: sub 500ms forwards; animation-iteration-count: 1; }
+    .anim-pls{ animation: pls 500ms forwards; animation-iteration-count: 1; }
+
+    @keyframes sub {
+      from{ transform: rotate(270deg); } to{ transform: rotate(0deg); }
+    }
+
+    @keyframes pls {
+      from{ transform: rotate(0deg); } to{ transform: rotate(270deg); }
+    }
+
     button.btn-add{
       background-color: #007bff;
+      border: 1px solid #007bff;
+      color: #fff;
+      padding: 15px;
 
+      &:focus{
+        box-shadow: none;
+      }
 
+      &:hover{
+        background-color: #0150a5;
+        border: 1px solid #0150a5;
+      }
     }
 
-    .form-control{
-
-    }
-
-    .input-group-append{
-      
+    .steps{
+      display: none;
     }
 
   }

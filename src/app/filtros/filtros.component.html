@@ -10,13 +10,23 @@
       <li class="list-inline-item item-plus">
         <div class="input-group mb-3 add-user">
           <div class="input-group-prepend">
-            <button class="btn btn-outline-secondary btn-add" type="button">
-              <span>+</span>
+            <button
+              (click)="liberaCadastro()"
+              class="btn btn-outline-secondary btn-add"
+              type="button"
+            >
+              <span class="line line-1"></span>
+              <span class="line line-2"></span>
             </button>
           </div>
-          <input type="text" class="form-control" placeholder="Recipient's username" aria-label="Recipient's username" aria-describedby="basic-addon2">
-          <div class="input-group-append">
-            <button class="btn btn-outline-secondary" type="button">Adicionar</button>
+          <input type="text" class="form-control steps step1" placeholder="nome usuário" aria-label="nome do usuário" aria-describedby="cadastro de novo usuário">
+          <div class="input-group-append steps stp1">
+            <button (click)="avanca($event)" class="btn btn-outline-secondary" type="button">Avançar</button>
+          </div>
+
+          <input type="text" class="form-control steps step2" placeholder="url da imagem" aria-label="url da imagem" aria-describedby="url da imagem">
+          <div class="input-group-append steps stp2">
+            <button (click)="cadastra($event)" class="btn btn-outline-secondary" type="button">Cadastra</button>
           </div>
         </div>
       </li>
