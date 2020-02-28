@@ -1,1 +1,41 @@
-<p>criar-task works!</p>
+<div class="bg-op-task d-none">
+  <div class="container">
+    <div class="row">
+      <button (click)="closeFormCriaTask()" id="closeFormTask" class="btn btn-close-form">X</button>
+      <div id="criar-task" class="col-xs-12 col-md-8 offset-md-2 col-lg-10 offset-lg-1">
+        <h2>Adicionar task</h2>
+        <br>
+
+        <form #task="ngForm" (ngSubmit) = "criaTask(task.value)" class="gerar-nova-col">
+
+          <fieldset>
+            <legend>Cadastrar nova task</legend>
+            <div class="form-group ">
+              <label for="atribuir">Task</label>
+              <input type="text" class="form-control" name="task" placeholder="Insira a task" required ngModel>
+
+              <div>Atribuir task</div>
+              <div class="form-check form-check-inline">
+                <div *ngFor="let person of people">
+                  <input class="form-check-input" name="p - {{person}}" type="checkbox" [value]="person" ngModel>
+                  <label class="form-check-label" [for]="person">{{ person }}</label>
+                </div>
+              </div>
+
+              <div>Atribuir tags</div>
+              <div class="form-check form-check-inline">
+                <div *ngFor="let tag of tags">
+                  <input class="form-check-input" name="t - {{tag}}" type="checkbox" [value]="tag" ngModel>
+                  <label class="form-check-label" [for]="tag">{{ tag }}</label>
+                </div>
+              </div>
+            </div>
+          </fieldset>
+          <div class="form-group">
+            <button type="submit" class="btn btn-success">Criar nova task</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>

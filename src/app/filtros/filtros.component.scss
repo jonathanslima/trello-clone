@@ -3,11 +3,32 @@
 .list-people{
   li{
     margin-right: 15px;
+    margin-bottom: 10px;
 
     .photo-url{
       width: 30px;
       margin-right: 5px;
     }
+
+  }
+
+  .item-plus{
+    position: relative;
+
+    button.btn-add{
+      background-color: #007bff;
+
+
+    }
+
+    .form-control{
+
+    }
+
+    .input-group-append{
+      
+    }
+
   }
 
   a{

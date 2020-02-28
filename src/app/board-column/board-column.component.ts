@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from "@angular/core";
+import { Component, OnInit, Input, Output, EventEmitter } from "@angular/core";
 import { CdkDragDrop, moveItemInArray, transferArrayItem } from "@angular/cdk/drag-drop";
 
 @Component({
@@ -9,6 +9,8 @@ import { CdkDragDrop, moveItemInArray, transferArrayItem } from "@angular/cdk/dr
 
 export class BoardColumnComponent implements OnInit {
   @Input() public columns: Array<object>;
+  @Output() public nomeColuna: EventEmitter<string> = new EventEmitter();
+
   public imgDefault = "../../assets/img/user.png";
 
   constructor() {}
@@ -60,6 +62,13 @@ export class BoardColumnComponent implements OnInit {
   public openFormCriaColuna(){
     let el = <HTMLElement>document.querySelector('.bg-op');
     el.classList.remove('d-none')
+  }
+
+  public openFormCriaTask(event){
+    let el = <HTMLElement>document.querySelector('.bg-op-task');
+    let nameCol = event.target.closest('.coluna').querySelector('.header .titulo-coluna').textContent;
+    el.classList.remove('d-none');
+    this.nomeColuna.emit(nameCol);
   }
 
   ngOnInit() {

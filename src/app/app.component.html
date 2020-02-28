@@ -4,8 +4,8 @@
     <app-busca-filtros></app-busca-filtros>
   </nav>
   <div *ngIf="columns">
-    <app-board-column [columns]="columns"></app-board-column>
+    <app-board-column [columns]="columns" (nomeColuna)="nomeColuna($event)"></app-board-column>
   </div>
   <app-criar-coluna [columns]="columns" (atualizaColunas)="atualizaColumn($event)"></app-criar-coluna>
-  <!-- <app-criar-task [columns]="columns"></app-criar-task> -->
+  <app-criar-task [columns]="columns" [nameCol]="nameCol" (atualizaColunas)="atualizaColumn($event)"></app-criar-task>
 </div>

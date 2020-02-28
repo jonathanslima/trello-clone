@@ -7,6 +7,7 @@ import { Injectable } from '@angular/core';
 export class retrieveData{
   constructor(private http: HttpClient){}
 
+  // Title
   public getTitle():Promise<any>{
     return this.http.get('http://localhost:3000/titleBoard')
       .toPromise()
@@ -19,6 +20,7 @@ export class retrieveData{
       .then((res: any) => res)
   }
 
+  // Columns
   public getColumns():Promise<any>{
     return this.http.get('http://localhost:3000/columns')
       .toPromise()
@@ -31,12 +33,21 @@ export class retrieveData{
       .then((columns: any)=> columns)
   }
 
+  // Tasks
+  public addTask(data, id):Promise<any>{
+    return this.http.put(`http://localhost:3000/columns/${id}`, data)
+      .toPromise()
+      .then((cards: any)=> cards)
+  }
+
+  // Tasks
   public getTags(){
     return this.http.get('http://localhost:3000/tags')
     .toPromise()
     .then((tags: any) => tags)
   }
 
+  // People
   public getPeople(){
     return this.http.get('http://localhost:3000/people')
       .toPromise()

@@ -10,12 +10,18 @@ import { retrieveData } from './servicos/data.service';
 export class AppComponent {
   public title: string;
   public columns: Array<object>;
+  public nameCol: string;
 
   constructor(private retrieveData:retrieveData) { }
 
   public atualizaColumn(data){
     this.columns = data;
   }
+
+  public nomeColuna(data){
+    this.nameCol = data;
+  }
+
 
   ngOnInit() {
     this.retrieveData.getTitle()

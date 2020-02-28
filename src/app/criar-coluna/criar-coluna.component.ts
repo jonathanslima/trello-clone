@@ -10,6 +10,7 @@ import { retrieveData } from '../servicos/data.service';
 export class CriarColunaComponent implements OnInit {
   @Input() public columns: Array<object>;
   @Output() atualizaColunas = new EventEmitter();
+
   public people: Array<string> = [];
   public tags: Array<string> = [];
   public objPeople: any = {};
