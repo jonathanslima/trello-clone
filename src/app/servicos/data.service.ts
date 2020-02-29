@@ -40,7 +40,7 @@ export class retrieveData{
       .then((cards: any)=> cards)
   }
 
-  // Tasks
+  // Tags
   public getTags(){
     return this.http.get('http://localhost:3000/tags')
     .toPromise()
@@ -52,6 +52,12 @@ export class retrieveData{
     return this.http.get('http://localhost:3000/people')
       .toPromise()
       .then((people:any) => people)
+  }
+
+  public addUser(data){
+    return this.http.post('http://localhost:3000/people', data)
+      .toPromise()
+      .then((user:any)=> user)
   }
 }
 

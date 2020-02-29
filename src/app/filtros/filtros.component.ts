@@ -11,7 +11,7 @@ import { retrieveData } from '../servicos/data.service';
 export class FiltrosComponent implements OnInit {
   public tags: Array<string>;
   public people: Array<object>;
-  public userImg: string;
+  public userImg: string = '../../assets/img/user.png';
   public bol: boolean = true;
 
   constructor(private retrieveData : retrieveData ) { }
@@ -44,10 +44,23 @@ export class FiltrosComponent implements OnInit {
     document.querySelector('.stp2').classList.add('d-block');
   }
 
-  public cadastra(){
+  public cadastra(formData){
     document.querySelector('.step2').classList.remove('d-block');
     document.querySelector('.stp2').classList.remove('d-block');
-    console.log('cadastrado usuario')
+
+    let data = {
+      name: formData.user,
+      photoURL: formData.urlImg || null
+    };
+
+    this.retrieveData.addUser(data)
+      .then((user)=>{
+        alert(`Usuário ${user.name} cadastrado`);
+        this.retrieveData.getPeople()
+          .then(people => {
+            this.people = people;
+          })
+      })
   }
 
   ngOnInit() {
@@ -57,7 +70,6 @@ export class FiltrosComponent implements OnInit {
     this.retrieveData.getPeople()
       .then(people => {
         this.people = people;
-        this.userImg = people.photoUrl ? people.photoUrl : '../../assets/img/user.png';
       })
   }
 

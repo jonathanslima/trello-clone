@@ -3,32 +3,47 @@
     <ul class="list-inline list-people col-md-4 col-lg-7">
       <li class="list-inline-item" *ngFor="let person of people">
         <a class="text-xs-center" href="#">
-          <img class="photo-url" [src]="userImg" alt="">
+
+          <img *ngIf="person?.photoURL; else imgDefault" class="photo-url" [src]="person.photoURL" [alt]="person.name">
+          <ng-template #imgDefault>
+            <img class="photo-url" [src]="userImg" [alt]="person.name">
+          </ng-template>
           <b>{{ person.name }}</b>
         </a>
       </li>
       <li class="list-inline-item item-plus">
-        <div class="input-group mb-3 add-user">
+        <form #cadastro="ngForm" (ngSubmit)="cadastra(cadastro.value)" class="input-group mb-3 add-user">
           <div class="input-group-prepend">
             <button
               (click)="liberaCadastro()"
               class="btn btn-outline-secondary btn-add"
-              type="button"
-            >
+              type="button">
               <span class="line line-1"></span>
               <span class="line line-2"></span>
             </button>
           </div>
-          <input type="text" class="form-control steps step1" placeholder="nome usuário" aria-label="nome do usuário" aria-describedby="cadastro de novo usuário">
+          <input  type="text"
+                  class="form-control steps step1"
+                  name="user"
+                  placeholder="nome usuário"
+                  aria-label="nome do usuário"
+                  aria-describedby="cadastro de novo usuário"
+                  ngModel>
           <div class="input-group-append steps stp1">
             <button (click)="avanca($event)" class="btn btn-outline-secondary" type="button">Avançar</button>
           </div>
 
-          <input type="text" class="form-control steps step2" placeholder="url da imagem" aria-label="url da imagem" aria-describedby="url da imagem">
+          <input  type="text"
+                  class="form-control steps step2"
+                  name="urlImg"
+                  placeholder="url da imagem"
+                  aria-label="url da imagem"
+                  aria-describedby="url da imagem"
+                  ngModel>
           <div class="input-group-append steps stp2">
-            <button (click)="cadastra($event)" class="btn btn-outline-secondary" type="button">Cadastra</button>
+            <button class="btn btn-outline-secondary" type="submit">Cadastra</button>
           </div>
-        </div>
+        </form>
       </li>
     </ul>
 
