@@ -1,4 +1,4 @@
-import { Component, OnInit, Output, EventEmitter } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 
 @Component({
   selector: 'app-busca',
@@ -8,15 +8,40 @@ import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 export class BuscaComponent implements OnInit {
   public label = 'FILTRO AVANÇADO';
   public showFilter = false;
-  @Output() public search: EventEmitter<string> = new EventEmitter();
+  public filteredCard: string;
 
   constructor() { }
 
-  ngOnInit() {
-  }
+  ngOnInit() {}
 
-  public getSearch(event): void{
-    this.search.emit(event.target.value)
+  public getSearch(event, classe): void{
+    this.filteredCard = event.target.value;
+    let totalCards = [].slice.call(document.querySelectorAll('.task'))
+    let exp = new RegExp(this.filteredCard.trim(), 'i');
+
+    if(this.filteredCard){
+      totalCards.map((card)=> {
+        let el : any = [].slice.call(card.querySelectorAll(classe));
+        let deleteCard : Boolean;
+        card.classList.remove('d-none', 'd-block')
+
+        if(classe === '.persona' && el.length < 1) deleteCard = true;
+
+        for(let i = 0; i < el.length; i++){
+          if(!(exp.test(el[i].textContent)) ){
+            deleteCard = true;
+
+          }else{
+            deleteCard = false
+            break;
+          }
+        }
+
+        if(deleteCard) card.classList.add('d-none')
+      })
+    }else{
+      totalCards.map(card=> card.classList.remove('d-none'))
+    }
   }
 
   public toogleFilters(){
