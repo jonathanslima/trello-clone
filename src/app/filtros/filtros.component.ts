@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { retrieveData } from '../servicos/data.service';
 
 @Component({
@@ -13,6 +13,9 @@ export class FiltrosComponent implements OnInit {
   public people: Array<object>;
   public userImg: string = '../../assets/img/user.png';
   public bol: boolean = true;
+  public allCards: Array<any>;
+  public filteredCard: string;
+  @Input() public valueSearch: string;
 
   constructor(private retrieveData : retrieveData ) { }
 
@@ -63,7 +66,44 @@ export class FiltrosComponent implements OnInit {
       })
   }
 
+  public toFilter(event, classe) :void{
+    let value = event.srcElement.textContent;
+    this.filteredCard = value;
+    var totalCards = [].slice.call(document.querySelectorAll('.task'))
+
+    console.log(this.valueSearch)
+
+    if(this.filteredCard){
+      totalCards.map((card)=> {
+        var el : any = [].slice.call(card.querySelectorAll(classe));
+        var deleteCard : Boolean;
+        card.classList.remove('d-none',  'd-block')
+
+        if(classe === '.persona' && el.length < 1) deleteCard = true;
+
+        for(let i = 0; i < el.length; i++){
+          if(this.filteredCard === "Todas"){
+            deleteCard = false
+            break;
+
+          }else if(this.filteredCard !== el[i].textContent){
+            deleteCard = true;
+
+          }else{
+            deleteCard = false
+            break;
+          }
+        }
+
+        if(deleteCard)card.classList.add('d-none')
+      })
+    }
+  }
+
   ngOnInit() {
+    this.retrieveData.getColumns()
+      .then(column => this.allCards = column)
+
     this.retrieveData.getTags()
       .then(tag => this.tags = tag)
 

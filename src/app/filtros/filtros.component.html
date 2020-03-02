@@ -2,13 +2,13 @@
   <div class="row">
     <ul class="list-inline list-people col-md-4 col-lg-7">
       <li class="list-inline-item" *ngFor="let person of people">
-        <a class="text-xs-center" href="#">
+        <a class="text-xs-center" href="javascript:;" (click)="toFilter($event, '.persona')">
 
           <img *ngIf="person?.photoURL; else imgDefault" class="photo-url" [src]="person.photoURL" [alt]="person.name">
           <ng-template #imgDefault>
             <img class="photo-url" [src]="userImg" [alt]="person.name">
           </ng-template>
-          <b>{{ person.name }}</b>
+          <b class="persona">{{ person.name }}</b>
         </a>
       </li>
       <li class="list-inline-item item-plus">
@@ -49,7 +49,7 @@
 
     <ul class="list-inline list-tags col-md-4 col-lg-3">
       <li class="list-inline-item" *ngFor="let tag of tags">
-        <a href="#" class="badge badge-light">{{ tag }}</a>
+        <a href="javascript:;" (click)="toFilter($event, '.badge')" class="badge badge-light">{{ tag }}</a>
       </li>
     </ul>
   </div>

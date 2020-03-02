@@ -25,10 +25,12 @@
         <span *ngFor="let allMembers of card.members">
           <span *ngIf="allMembers?.photoURL; else imgDefault">
             <img class="photo-url" [src]="allMembers.photoURL" [alt]="allMembers.name" [title]="allMembers.name">
+            <span class="persona d-none">{{ allMembers.name }}</span>
           </span>
 
           <ng-template #imgDefault>
             <img class="photo-url" src="../../assets/img/user.png" [alt]="allMembers.name" [title]="allMembers.name">
+            <span class="persona d-none">{{ allMembers.name }}</span>
           </ng-template>
         </span>
       </div>
