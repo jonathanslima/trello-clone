@@ -4,7 +4,6 @@ import { HttpClientModule } from "@angular/common/http";
 import { DragDropModule } from "@angular/cdk/drag-drop";
 import { FormsModule } from "@angular/forms";
 
-import { AppRoutingModule } from "./app-routing-module";
 import { AppComponent } from "./app.component";
 import { TopoComponent } from "./topo/topo.component";
 import { BuscaFiltrosComponent } from "./busca-filtros/busca-filtros.component";
@@ -29,8 +28,7 @@ import { CriarTaskComponent } from "./criar-task/criar-task.component";
     BrowserModule,
     HttpClientModule,
     DragDropModule,
-    FormsModule,
-    AppRoutingModule
+    FormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
