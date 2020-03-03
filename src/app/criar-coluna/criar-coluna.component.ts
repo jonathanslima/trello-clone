@@ -44,12 +44,15 @@ export class CriarColunaComponent implements OnInit {
     }
 
     let data = {
-      "title": formData.titulo,
+      "title": formData.titulo || 'título padrão',
       "cards": [
         {
-          "title": formData.task,
-          "tags": listaTags,
-          "members": listaPessoas
+          "title": formData.task || 'task padrão',
+          "tags": listaTags || 'Design',
+          "members": listaPessoas || [{
+            name: "Jonathan Lima",
+            photoURL: "https://avatars2.githubusercontent.com/u/5257225?s=460&v=4"
+          }]
         }
       ]
     };
