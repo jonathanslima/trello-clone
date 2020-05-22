@@ -43,8 +43,8 @@
     }
 
     button.btn-add{
-      background-color: #007bff;
-      border: 1px solid #007bff;
+      background-color: #4A5899;
+      border: 1px solid #4A5899;
       color: #fff;
       padding: 15px;
 
@@ -53,32 +53,24 @@
       }
 
       &:hover{
-        background-color: #0150a5;
-        border: 1px solid #0150a5;
+        background-color: #6279B8;
+        border: 1px solid #6279B8;
       }
     }
 
     .steps{
       display: none;
     }
-
   }
 
   a{
-    color: #566780;
+    color: #4A5899;
     transition: 500ms all ease;
     font-size: 14px;
 
     &:hover{
       text-decoration: none;
-      color: #007bff
+      color: #6279B8
     }
-  }
-}
-
-.list-tags{
-  .badge{
-    color: #818181
-
   }
 }

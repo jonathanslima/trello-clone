@@ -1,1 +1,14 @@
 /* You can add global styles to this file, and also import other style files */
+
+.badge-light{
+  color: #fff;
+  margin-right: 5px;
+  background-color: #00B9AE;
+
+  &:hover,
+  &:focus{
+    background-color: #81D2C7 !important;
+    color: #fff !important;
+
+  }
+}
